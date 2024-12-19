@@ -1,10 +1,13 @@
-import Login from './Components/Login/Login';
+// import React from 'react';
+// import { ReactDOM } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './routes';
 
 function App() {
   return (
-  <div>
-    <Login/>
-  </div>
+  <BrowserRouter>
+    <AppRoutes />
+  </BrowserRouter>
   );
 }
 

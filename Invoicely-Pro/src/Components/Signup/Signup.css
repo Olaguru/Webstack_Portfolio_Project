@@ -11,31 +11,31 @@
 /* Login.css */
 
 .logo {
-    padding-bottom: 70px;
+    padding-bottom: 20px;
 }
-.login-container {
-  background-color: var(--color-background);
-  width: 400px;
-  margin: auto;
-  color: var(--color-text);
-  font-family: poppins;
-  padding: 10px;
-  margin-left: 70px;
-  box-sizing: border-box;
+.signup-container {
+    background-color: var(--color-background);
+    width: 400px;
+    margin: auto;
+    color: var(--color-text);
+    font-family: poppins;
+    padding: 10px;
+    margin-left: 70px;
+    box-sizing: border-box;
   }
   
-  .login-container h1 {
+  .signup-container h1 {
     color: var(--color-text);
     font-size: var(--font-size-h1);
     font-weight: bolder;
   }
 
 
-  .login-form {
+  .signup-form {
     margin-top: 25px;
   }
   
-  .login-form input {
+  .signup-form input {
     width: 100%;
     height: 15px;
     margin-bottom: 20px;
@@ -43,7 +43,7 @@
     border: 1px solid #ccc;
   }
   
-  .login-form button {
+  .signup-form button {
     width: 400px;
     height: 40px;
     background-color: var(--color-login);
@@ -53,14 +53,14 @@
     cursor: pointer;
   }
   
-  .login-form label {
+  .signup-form label {
     color: var(--color-text);
     font-size: 17px;
   }
-  .login-form button:hover {
+  .signup-form button:hover {
     background-color: black;
   }
 
-  .login-container p {
+  .signup-container p {
     color: var(--color-text);
   }
