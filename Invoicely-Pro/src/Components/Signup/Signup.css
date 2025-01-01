@@ -10,18 +10,51 @@
 }
 /* Login.css */
 
-.logo {
-    padding-bottom: 20px;
+.logoText h1{
+  font-size: 2.5em; /* Larger font for the main title */
+  font-weight: bold; /* Make the title bold */
+  text-transform: uppercase; /* Make the title uppercase */
+  letter-spacing: 2px; /* Add space between letters */
+  margin-bottom: -5px; /* Reduce the space below the title */
 }
+
+.logoText h3{
+
+  font-size: 1em; /* Slightly smaller font for the subtitle */
+  font-weight: normal; /* Normal weight for the subtitle */
+  margin-top: -10px; /* Adjust the spacing between title and subtitle */
+  text-indent: 3em; /* Add a tab-like space at the beginning */
+  letter-spacing: 1px; /* Add subtle spacing between letters */
+
+}
+
+.side-image {
+  /* width: 40%; */
+  height: 100vh;
+  width: 100%;
+  /* margin-left: 10px; */
+}
+
+.sideImageDiv {
+  flex: 1;
+}
+
+.signup-main-container {
+  display: flex;
+  width: 100vw;
+  align-items: start;
+  gap: 100px;
+  height: 100%;
+  background: white;
+}
+
 .signup-container {
     background-color: var(--color-background);
-    width: 400px;
-    margin: auto;
+    flex: 1;
     color: var(--color-text);
     font-family: poppins;
     padding: 10px;
-    margin-left: 70px;
-    box-sizing: border-box;
+    /* flex: 0.8; */
   }
   
   .signup-container h1 {
@@ -37,14 +70,14 @@
   
   .signup-form input {
     width: 100%;
-    height: 15px;
+    height: 30px;
     margin-bottom: 20px;
-    padding: 10px;
+   
     border: 1px solid #ccc;
   }
   
   .signup-form button {
-    width: 400px;
+    width: 100%;
     height: 40px;
     background-color: var(--color-login);
     color: #fff;
@@ -64,3 +97,4 @@
   .signup-container p {
     color: var(--color-text);
   }
+

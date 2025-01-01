@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 
 import login_side_image from '../../assets/login_side_image.png';
-import logo from '../../assets/invoice_pro_logo.png';
 
 
 function Signup() {
@@ -16,6 +15,7 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [signupSuccess, setSignupSuccess] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [passwordStrengthError, setPasswordStrengthError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
@@ -24,47 +24,70 @@ function Signup() {
       setPasswordError(true);
     } else {
       setPasswordError(false);
-      const userData = {
-        full_name: fullName,
-        email: email,
-        company_name: companyName,
-        password: password,
-        logo: null
-      };
+      const passwordStrength = validatePasswordStrength(password);
+      if (!passwordStrength) {
+        setPasswordStrengthError(true);
+      } else {
+        setPasswordStrengthError(false);
+        const userData = {
+          full_name: fullName,
+          email: email,
+          company_name: companyName,
+          password: password,
+          logo: null
+        };
 
-      setLoading(true);
-      fetch('http://127.0.0.1:8000/api/users/signup/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-      })
-      .then(response => response.json())
-      .then(data => {
-        setLoading(false);
-        setSignupSuccess(true);
-        setFullName('');
-        setEmail('');
-        setCompanyName('');
-        setPassword('');
-        setConfirmPassword('');
-      })
-      .catch(error => {
-        setLoading(false);
-        console.error('Error:', error);
-      });
+        setLoading(true);
+        fetch('http://127.0.0.1:8000/api/users/signup/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(userData)
+        })
+        .then(response => response.json())
+        .then(data => {
+          setLoading(false);
+          setSignupSuccess(true);
+          setFullName('');
+          setEmail('');
+          setCompanyName('');
+          setPassword('');
+          setConfirmPassword('');
+        })
+        .catch(error => {
+          setLoading(false);
+          console.error('Error:', error);
+        });
+      }
     }
   };
 
+  const validatePasswordStrength = (password) => {
+    // Define password strength rules
+    const rules = [
+      (password) => password.length >= 8, // Min 8 characters
+      (password) => /[a-z]/.test(password), // At least one lowercase letter
+      (password) => /[A-Z]/.test(password), // At least one uppercase letter
+      (password) => /[0-9]/.test(password), // At least one digit
+      (password) => /[!@#$%^&*()_+=[\]{};':"\\|,.<>?]/.test(password), // At least one special character
+    ];
+
+    // Check if password meets all rules
+    return rules.every((rule) => rule(password));
+  };
+
   return (
-    <div className='signup-container'>
-        <div>
-            <img src={logo} alt='app-logo' className='logo'/>
+    <div className='signup-main-container'>
+      <div className='signup-container'>
+        <div className='logoText'>
+            <h1>INVOICELY PRO</h1>
+            <h3>Custom Invoice</h3>
         </div>
-      <h1>SIGN UP</h1>
+      <h1 style={{fontSize: '30px'}}>SIGN UP</h1>
       {signupSuccess && <p style={{color: 'green'}}>Signup successful!</p>}
       {passwordError && <p style={{color: 'red'}}>Passwords do not match!</p>}
+      {passwordStrengthError && <p style={{color: 'red'}}>Password must be at least 8 characters, contain at least one lowercase letter, one uppercase letter, one digit, and one special character.</p>}
       <form className='signup-form' onSubmit={handleSubmit}>
         <label className='label'>Full Name</label>
         <br />
@@ -91,6 +114,10 @@ function Signup() {
         </button>
       </form>
       <p>Already have an account? <Link to='/login'><u>Log in</u></Link></p>
+    </div>
+      <div className='sideImageDiv'>
+      <img src={login_side_image} alt='side-image' className='side-image'/>
+      </div>
     </div>
   );
 }

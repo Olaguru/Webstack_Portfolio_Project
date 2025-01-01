@@ -10,9 +10,34 @@
 }
 /* Login.css */
 
-.logo {
-    padding-bottom: 70px;
+.logoText h1{
+  font-size: 2.5em; /* Larger font for the main title */
+  font-weight: bold; /* Make the title bold */
+  text-transform: uppercase; /* Make the title uppercase */
+  letter-spacing: 2px; /* Add space between letters */
+  margin-bottom: -5px; /* Reduce the space below the title */
 }
+
+.logoText h3{
+
+  font-size: 1em; /* Slightly smaller font for the subtitle */
+  font-weight: normal; /* Normal weight for the subtitle */
+  margin-top: -10px; /* Adjust the spacing between title and subtitle */
+  text-indent: 3em; /* Add a tab-like space at the beginning */
+  letter-spacing: 1px; /* Add subtle spacing between letters */
+
+}
+
+.login-main-container {
+  display: flex;
+  width: 100vw;
+  align-items: start;
+  gap: 100px;
+  height: 100%;
+  background: white;
+}
+
+
 .login-container {
   background-color: var(--color-background);
   width: 400px;
@@ -29,7 +54,6 @@
     font-size: var(--font-size-h1);
     font-weight: bolder;
   }
-
 
   .login-form {
     margin-top: 25px;

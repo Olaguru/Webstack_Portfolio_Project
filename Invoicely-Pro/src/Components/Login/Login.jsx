@@ -3,7 +3,7 @@ import './login.css'
 import { Link, useNavigate } from 'react-router-dom';
 
 import login_side_image from '../../assets/login_side_image.png';
-import logo from '../../assets/invoice_pro_logo.png';
+
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -42,12 +42,14 @@ function Login() {
   };
 
   return (
+    <div className='login-main-container'>
     <div className='login-container'>
-        <div>
-            <img src={logo} alt='app-logo' className='logo'/>
+        <div className='logoText'>
+            <h1>INVOICELY PRO</h1>
+            <h3>Custom Invoice</h3>
         </div>
-      <h1>LOG IN</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+        <h1 style={{fontSize: '30px'}}>LOG IN</h1>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
       <form className='login-form' onSubmit={handleSubmit}>
         <label className='label'>Enter Your Email</label>
         <br />
@@ -60,6 +62,8 @@ function Login() {
         <button className='button' type="submit">Log in</button>
       </form>
       <p>Don't have an account? <Link to='/signup'><u>sign up</u></Link></p>
+    </div>
+          <img src={login_side_image} alt='side-image' className='side-image'/>
     </div>
   );
 }
